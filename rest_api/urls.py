@@ -29,7 +29,7 @@ router.register('test', api_user.api.MemberViewSet)
 
 schema_url_patterns = [
     url(r'^api/v1/', include((router.urls, 'test'), namespace='api')),
-    path('test/', views.test, name='test')
+    path('test/', views.cafe_similarity_measure, name='test')
 ]
 
 schema_view = get_schema_view(
@@ -51,5 +51,6 @@ urlpatterns = [
     url(r'^redoc/$', schema_view.with_ui('redoc', cache_timeout=0), name='swagger-redoc'),
 
     url(r'^api/v1/', include((router.urls, 'test'), namespace='api')),
-    path('test/<str:upload_img_name>/', views.test, name='test'),
+    path('test/<str:upload_img_name>/', views.cafe_similarity_measure, name='test'),
+    path('test-request/', views.testRequest, name='spring - django test request'),
 ]

@@ -1,16 +1,17 @@
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
+from django.http import JsonResponse
 import os
 from keras.models import load_model
 import numpy as np
 from tqdm import tqdm
 from annoy import AnnoyIndex
-from api_user import deepmodel
+from api_user import response
 import logging
 from api_user.models import Location
 logger = logging.getLogger(__name__)
 
-def test(request, upload_img_name):
+# cafe similarity measure with InceptionV3 and Annoy Index
+def cafe_similarity_measure(request, upload_img_name):
     apiGetResult = Location.objects.filter(name=upload_img_name).values()
 
     # save_img_path = "C:/cafe-img/dump/"
@@ -66,3 +67,7 @@ def test(request, upload_img_name):
     return JsonResponse({
         'data': apiGetResult[0]
     }, json_dumps_params={'ensure_ascii': True})
+
+# spring - django request and response test
+def testRequest(request):
+    return JsonResponse(response.success)
