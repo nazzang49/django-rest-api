@@ -52,5 +52,7 @@ urlpatterns = [
 
     url(r'^api/v1/', include((router.urls, 'test'), namespace='api')),
     path('test/<str:upload_img_name>/', views.cafe_similarity_measure, name='test'),
-    path('test-request/', views.testRequest, name='spring - django test request'),
+    path('test-request/', views.test_request, name='spring - django test request'),
+
+    path('kakao/', views.call_kakao_map, name='kakao map keyword search'),
 ]
